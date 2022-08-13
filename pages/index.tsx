@@ -1,9 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { Dispatch, SetStateAction, useState } from 'react'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
+  const [status, setStatus] = useState("...")
   return (
     <div className={styles.container}>
       <Head>
@@ -14,7 +16,8 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1>Twitter Likes Graph</h1>
-        <div className={styles.card} onClick={fetchLikes}>Sup</div>
+        <div className={styles.card} onClick={() => {fetchLikes(setStatus); setStatus("Loading...")}}>Click me to fetch @raidsrc's Twitter likes.</div>
+        <div>{status}</div>
       </main>
 
 
@@ -28,11 +31,12 @@ const Home: NextPage = () => {
 //   console.log(responseJson)
 // }
 
-async function fetchLikes() {
+async function fetchLikes(setStatus: Dispatch<SetStateAction<string>>) {
   const queryString = "?pages_to_fetch=10"
   try {
     let response = await fetch(`/api/fetch-twitter-likes${queryString}`)
     let responseJson = await response.json()
+    setStatus("Fetched.")
   } catch (error) {
     console.error(error)
   }

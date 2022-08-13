@@ -1,5 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
+import fs from "fs"
 
 type TwitterResponse = {
   data: Array<Object>,
@@ -28,7 +29,7 @@ async function twitterFetchLoop(pages: Number, fetchInfo: { bearerToken?: string
         }
       })
       let responseJson: TwitterResponse = await response.json()
-      allLikes.push(responseJson.data)
+      allLikes.push(...responseJson.data)
       paginationTokenQueryKeyAndValue = `&pagination_token=${responseJson.meta.next_token}`
     } catch (error) {
       console.error(error)
@@ -58,6 +59,8 @@ export default async function handler(
   const pages_to_fetch = Number(query.pages_to_fetch)
 
   const yeet = await twitterFetchLoop(pages_to_fetch, fetchInfo)
+  // const yeetString = String(yeet)
+  
   res.status(200).json({ ...yeet })
 
 }
