@@ -1,9 +1,10 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import fs from "fs"
+import path from "path"
 
 type TwitterResponse = {
-  data: Array<Object>,
+  data: Array<TwitterLikeObject>,
   meta: {
     result_count: Number,
     next_token: string
@@ -14,10 +15,16 @@ type FetchLikesQuery = {
   pages_to_fetch?: string
 }
 
+type TwitterLikeObject = {
+  created_at: Date,
+  id: string,
+  text: string
+}
+
 async function twitterFetchLoop(pages: Number, fetchInfo: { bearerToken?: string, endpoint: string }) {
   let { endpoint, bearerToken } = fetchInfo
   let paginationTokenQueryKeyAndValue: string = ""
-  let allLikes: Array<Object> = []
+  let allLikes: Array<TwitterLikeObject> = []
 
   for (let i = 0; i < pages; i++) {
     let completeEndpoint = endpoint + paginationTokenQueryKeyAndValue
@@ -59,7 +66,18 @@ export default async function handler(
   const pages_to_fetch = Number(query.pages_to_fetch)
 
   const yeet = await twitterFetchLoop(pages_to_fetch, fetchInfo)
-  // const yeetString = String(yeet)
+  // let yeetString = ""
+  // for (let i = 0; i < yeet.length; i++) {
+  //   yeetString += String(yeet[i].id) + " "
+  // }
+  const yeetString = JSON.stringify(yeet)
+
+  const pathToFile = path.join(process.cwd(), "json", "likes.txt")
+  try {
+    fs.writeFileSync(pathToFile, yeetString)
+  } catch (error) {
+    console.error(error)
+  }
   
   res.status(200).json({ ...yeet })
 

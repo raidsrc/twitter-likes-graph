@@ -16,7 +16,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h1>Twitter Likes Graph</h1>
-        <div className={styles.card} onClick={() => {fetchLikes(setStatus); setStatus("Loading...")}}>Click me to fetch @raidsrc's Twitter likes.</div>
+        <button className={styles.card} onClick={() => {fetchLikes(setStatus); setStatus("Loading...")}}>Click me to fetch @raidsrc's Twitter likes.</button>
         <div>{status}</div>
       </main>
 
@@ -25,14 +25,8 @@ const Home: NextPage = () => {
   )
 }
 
-// async function fetchSomething() {
-//   let response = await fetch("https://api.coindesk.com/v1/bpi/currentprice.json")
-//   let responseJson: object = await response.json()
-//   console.log(responseJson)
-// }
-
 async function fetchLikes(setStatus: Dispatch<SetStateAction<string>>) {
-  const queryString = "?pages_to_fetch=10"
+  const queryString = "?pages_to_fetch=2"
   try {
     let response = await fetch(`/api/fetch-twitter-likes${queryString}`)
     let responseJson = await response.json()
