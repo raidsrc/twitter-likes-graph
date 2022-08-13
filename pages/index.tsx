@@ -29,8 +29,9 @@ const Home: NextPage = () => {
 // }
 
 async function fetchLikes() {
+  const queryString = "?pages_to_fetch=10"
   try {
-    let response = await fetch("/api/fetchTwitterLikes")
+    let response = await fetch(`/api/fetch-twitter-likes${queryString}`)
     let responseJson = await response.json()
   } catch (error) {
     console.error(error)
