@@ -3,15 +3,16 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import fs from "fs"
 import path from "path"
 
-type Data = {
-  name: string
+type Response = {
+  data: string
 }
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<Response>
 ) {
-  const pathToFile = path.join(process.cwd(), "likes")
-  fs.readFileSync(pathToFile, "utf-8", )
-  res.status(200).json({ name: 'John Doe' })
+  console.log("hi")
+  const pathToFile = path.join(process.cwd(), "likes", "likesnew1.json")
+  const data = fs.readFileSync(pathToFile, "utf-8")
+  res.status(200).json({ data: data })
 }

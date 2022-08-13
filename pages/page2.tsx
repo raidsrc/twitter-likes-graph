@@ -6,6 +6,7 @@ import { Dispatch, SetStateAction, useState } from 'react'
 import styles from '../styles/Home.module.css'
 
 const GraphPage: NextPage = () => {
+  const [data, setData] = useState("")
   return (
     <div className={styles.container}>
       <Head>
@@ -15,10 +16,11 @@ const GraphPage: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <div>
-          
-        </div>
         <Link href="/">go back</Link>
+        <div onClick={() => {loadLikes(setData)}}>
+          AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          {data}
+        </div>
       </main>
 
 
@@ -26,8 +28,10 @@ const GraphPage: NextPage = () => {
   )
 }
 
-function loadLikes() {
-
+async function loadLikes(setData: Dispatch<SetStateAction<string>>) {
+  let response = await fetch("/api/get-locally-stored-likes")
+  let responseJson = await response.json()
+  setData(responseJson.data)
 }
 
 export default GraphPage
