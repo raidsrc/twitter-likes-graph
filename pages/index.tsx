@@ -15,9 +15,18 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1>Twitter Likes Graph</h1>
-        <button className={styles.card} onClick={() => {fetchLikes(setStatus); setStatus("Loading...")}}>Click me to fetch @raidsrc's Twitter likes.</button>
-        <div>{status}</div>
+        <h1>Raid's Twitter Likes Graph</h1>
+        {/* <button className={styles.card} onClick={() => {fetchLikes(setStatus); setStatus("Loading...")}}>Click me to fetch @raidsrc's Twitter likes.</button> */}
+        <h2>This web application produces data visualizations based on my Twitter likes. </h2>
+        <div className={styles.grid}>
+          <div className={styles.card}>a</div>
+          <div className={styles.card}>a</div>
+          <div className={styles.card}>a</div>
+          <div className={styles.card}>a</div>
+        </div>
+
+
+        {/* <div>{status}</div> */}
       </main>
 
 
