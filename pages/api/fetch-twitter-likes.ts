@@ -66,18 +66,27 @@ export default async function handler(
   const pages_to_fetch = Number(query.pages_to_fetch)
 
   const yeet = await twitterFetchLoop(pages_to_fetch, fetchInfo)
-  // let yeetString = ""
-  // for (let i = 0; i < yeet.length; i++) {
-  //   yeetString += String(yeet[i].id) + " "
-  // }
-  const yeetString = JSON.stringify(yeet)
 
-  const pathToFile = path.join(process.cwd(), "json", "likes.txt")
+  const yeetString = JSON.stringify(yeet)
+  const pathToFile = path.join(process.cwd(), "json")
   try {
-    fs.writeFileSync(pathToFile, yeetString)
+    fs.writeFileSync(pathToFile + "likes.txt", yeetString)
   } catch (error) {
     console.error(error)
   }
+  
+  let yeetString2 = ""
+  for (let i = 0; i < yeet.length; i++) {
+    yeetString2 += String(yeet[i].id) + " "
+  }
+
+  try {
+    fs.writeFileSync(pathToFile + "likes.json", yeetString)
+  } catch (error) {
+    console.error(error)
+  }
+
+
   
   res.status(200).json({ ...yeet })
 
