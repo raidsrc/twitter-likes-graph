@@ -27,6 +27,9 @@ async function twitterFetchLoop(pages: Number, fetchInfo: { bearerToken?: string
   let allLikes: Array<TwitterLikeObject> = []
 
   for (let i = 0; i < pages; i++) {
+    if (paginationTokenQueryKeyAndValue === "naw we done") {
+      break
+    }
     let completeEndpoint = endpoint + paginationTokenQueryKeyAndValue
     try {
       let response = await fetch(completeEndpoint, {
@@ -37,7 +40,11 @@ async function twitterFetchLoop(pages: Number, fetchInfo: { bearerToken?: string
       })
       let responseJson: TwitterResponse = await response.json()
       allLikes.push(...responseJson.data)
-      paginationTokenQueryKeyAndValue = `&pagination_token=${responseJson.meta.next_token}`
+      if (responseJson.meta.next_token) {
+        paginationTokenQueryKeyAndValue = `&pagination_token=${responseJson.meta.next_token}`
+      } else {
+        paginationTokenQueryKeyAndValue = "naw we done"
+      }
     } catch (error) {
       console.error(error)
     }
@@ -69,19 +76,26 @@ export default async function handler(
 
   const yeetString = JSON.stringify(yeet)
   const pathToFile = path.join(process.cwd(), "json")
-  try {
-    fs.writeFileSync(pathToFile + "likes.txt", yeetString)
-  } catch (error) {
-    console.error(error)
-  }
+  // try {
+  //   fs.writeFileSync(pathToFile + "likes.txt", yeetString)
+  // } catch (error) {
+  //   console.error(error)
+  // }
   
-  let yeetString2 = ""
+  let yeetString2 = "{"
   for (let i = 0; i < yeet.length; i++) {
-    yeetString2 += String(yeet[i].id) + " "
+    yeetString2 += `"${String(i)}":` + JSON.stringify(yeet[i])
+    if (i !== yeet.length - 1) {
+      yeetString2 += ", \n"
+    }
   }
+  yeetString2 += "}"
+  // for (let i = 0; i < yeet.length; i++) {
+  //   yeetString2 += `{"id": "${String(yeet[i].id)}", "created_at": "${String(yeet[i].created_at)}", "text": "${String(yeet[i].text)}"}\n`
+  // }
 
   try {
-    fs.writeFileSync(pathToFile + "likes.json", yeetString)
+    fs.writeFileSync(pathToFile + "/likes.json", yeetString2)
   } catch (error) {
     console.error(error)
   }

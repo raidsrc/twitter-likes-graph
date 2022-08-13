@@ -26,7 +26,7 @@ const Home: NextPage = () => {
 }
 
 async function fetchLikes(setStatus: Dispatch<SetStateAction<string>>) {
-  const queryString = "?pages_to_fetch=3"
+  const queryString = "?pages_to_fetch=200"
   try {
     let response = await fetch(`/api/fetch-twitter-likes${queryString}`)
     let responseJson = await response.json()
