@@ -6,7 +6,6 @@ import { Dispatch, SetStateAction, useState } from 'react'
 import styles from '../styles/Home.module.css'
 
 const GraphPage: NextPage = () => {
-  const [status, setStatus] = useState("...")
   return (
     <div className={styles.container}>
       <Head>
@@ -16,12 +15,19 @@ const GraphPage: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
+        <div>
+          
+        </div>
         <Link href="/">go back</Link>
       </main>
 
 
     </div>
   )
+}
+
+function loadLikes() {
+
 }
 
 export default GraphPage
