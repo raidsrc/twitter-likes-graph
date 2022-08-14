@@ -25,16 +25,12 @@ const GraphPage: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <svg>
-          <circle className='target' cx={150} cy={150} r={40} stroke="orange">
-          </circle>
-        </svg>
         
         <BarChart />
-
+          
         <Link href="/">go back</Link>
         <div onClick={() => { loadLikes(setData) }}>
-          AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
           {data}
         </div>
       </main>
