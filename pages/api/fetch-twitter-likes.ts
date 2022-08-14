@@ -15,8 +15,8 @@ type FetchLikesQuery = {
   pages_to_fetch?: string
 }
 
-type TwitterLikeObject = {
-  created_at: Date,
+export type TwitterLikeObject = {
+  created_at: string,
   id: string,
   text: string
 }
