@@ -2,11 +2,68 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
+import * as d3 from "d3"
+import "d3-time-format"
+const parseTime = d3.timeParse("%d-%b-%y");
+
+const createGraph = async () => {
+  const margin = { top: 20, right: 20, bottom: 50, left: 70 },
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+  const x = d3.scaleTime().range([0, width]);
+  const y = d3.scaleLinear().range([height, 0]);
+
+  const valueLine = d3.line()
+    .x((d) => { return x(d.date); })
+    .y((d) => { return y(d.close); });
+
+  const svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+  
+  let data = [
+    {"date": "01-May-20", "close": 58.13},
+    {"date": "27-Apr-20", "close": 67.00},
+    {"date": "30-Apr-20", "close": 89.70},
+    {"date": "27-Apr-20", "close": 99.00},
+    {"date": "25-Apr-20", "close": 58.13},
+    {"date": "26-Apr-20", "close": 68.96},
+  ]
+
+  data.forEach((d) => {
+    d.date = parseTime(d.date);
+    d.close = +d.close;
+  });
+
+  data = data.sort((a, b) => +a.date - +b.date)
+
+  x.domain(d3.extent(data, (d) => { return d.date; }));
+  y.domain([0, d3.max(data, (d) => { return d.close; })]);
+
+  svg.append("path")
+    .data([data])
+    .attr("class", "line")
+    .attr("d", valueLine)
+    .attr("stroke", "blue");
+
+  svg.append("g")
+    .attr("transform", `translate(0, ${height})`)
+    .call(d3.axisBottom(x));
+
+  svg.append("g")
+    .call(d3.axisLeft(y));
+}
 
 const GraphPage: NextPage = () => {
   const [data, setData] = useState("")
+  useEffect(() => {
+    createGraph()
+  }, [])
   return (
     <div className={styles.container}>
       <Head>
@@ -16,8 +73,12 @@ const GraphPage: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
+        <svg>
+          <circle className='target' cx={150} cy={150} r={40} stroke="orange">
+          </circle>
+        </svg>
         <Link href="/">go back</Link>
-        <div onClick={() => {loadLikes(setData)}}>
+        <div onClick={() => { loadLikes(setData) }}>
           AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
           {data}
         </div>
@@ -33,5 +94,169 @@ async function loadLikes(setData: Dispatch<SetStateAction<string>>) {
   let responseJson = await response.json()
   setData(responseJson.data)
 }
+
+// Copyright 2021 Observable, Inc.
+// Released under the ISC license.
+// https://observablehq.com/@d3/sortable-bar-chart
+// function BarChart(data, {
+//   x = (d, i) => i, // given d in data, returns the (ordinal) x-value
+//   y = d => d, // given d in data, returns the (quantitative) y-value
+//   marginTop = 20, // the top margin, in pixels
+//   marginRight = 0, // the right margin, in pixels
+//   marginBottom = 30, // the bottom margin, in pixels
+//   marginLeft = 40, // the left margin, in pixels
+//   width = 640, // the outer width of the chart, in pixels
+//   height = 400, // the outer height of the chart, in pixels
+//   xDomain, // an array of (ordinal) x-values
+//   xRange = [marginLeft, width - marginRight], // [left, right]
+//   yType = d3.scaleLinear, // type of y-scale
+//   yDomain, // [ymin, ymax]
+//   yRange = [height - marginBottom, marginTop], // [bottom, top]
+//   xPadding = 0.1, // amount of x-range to reserve to separate bars
+//   yFormat, // a format specifier string for the y-axis
+//   yLabel, // a label for the y-axis
+//   color = "currentColor", // bar fill color
+//   duration: initialDuration = 250, // transition duration, in milliseconds
+//   delay: initialDelay = (_, i) => i * 20 // per-element transition delay, in milliseconds
+// } = {}) {
+//   // Compute values.
+//   const X = d3.map(data, x);
+//   const Y = d3.map(data, y);
+
+//   // Compute default domains, and unique the x-domain.
+//   if (xDomain === undefined) xDomain = X;
+//   if (yDomain === undefined) yDomain = [0, d3.max(Y)];
+//   xDomain = new d3.InternSet(xDomain);
+
+//   // Omit any data not present in the x-domain.
+//   const I = d3.range(X.length).filter(i => xDomain.has(X[i]));
+
+//   // Construct scales, axes, and formats.
+//   const xScale = d3.scaleBand(xDomain, xRange).padding(xPadding);
+//   const yScale = yType(yDomain, yRange);
+//   const xAxis = d3.axisBottom(xScale).tickSizeOuter(0);
+//   const yAxis = d3.axisLeft(yScale).ticks(height / 40, yFormat);
+//   const format = yScale.tickFormat(100, yFormat);
+
+//   const svg = d3.create("svg")
+//     .attr("width", width)
+//     .attr("height", height)
+//     .attr("viewBox", [0, 0, width, height])
+//     .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+
+//   const yGroup = svg.append("g")
+//     .attr("transform", `translate(${marginLeft},0)`)
+//     .call(yAxis)
+//     .call(g => g.select(".domain").remove())
+//     .call(g => g.selectAll(".tick").call(grid))
+//     .call(g => g.append("text")
+//       .attr("x", -marginLeft)
+//       .attr("y", 10)
+//       .attr("fill", "currentColor")
+//       .attr("text-anchor", "start")
+//       .text(yLabel));
+
+//   let rect = svg.append("g")
+//     .attr("fill", color)
+//     .selectAll("rect")
+//     .data(I)
+//     .join("rect")
+//     .property("key", i => X[i]) // for future transitions
+//     .call(position, i => xScale(X[i]), i => yScale(Y[i]))
+//     .style("mix-blend-mode", "multiply")
+//     .call(rect => rect.append("title")
+//       .text(i => [X[i], format(Y[i])].join("\n")));
+
+//   const xGroup = svg.append("g")
+//     .attr("transform", `translate(0,${height - marginBottom})`)
+//     .call(xAxis);
+
+//   // A helper method for updating the position of bars.
+//   function position(rect, x, y) {
+//     return rect
+//       .attr("x", x)
+//       .attr("y", y)
+//       .attr("height", typeof y === "function" ? i => yScale(0) - y(i) : i => yScale(0) - y)
+//       .attr("width", xScale.bandwidth());
+//   }
+
+//   // A helper method for generating grid lines on the y-axis.
+//   function grid(tick) {
+//     return tick.append("line")
+//       .attr("class", "grid")
+//       .attr("x2", width - marginLeft - marginRight)
+//       .attr("stroke", "currentColor")
+//       .attr("stroke-opacity", 0.1);
+//   }
+
+//   // Call chart.update(data, options) to transition to new data.
+//   return Object.assign(svg.node(), {
+//     update(data, {
+//       xDomain, // an array of (ordinal) x-values
+//       yDomain, // [ymin, ymax]
+//       duration = initialDuration, // transition duration, in milliseconds
+//       delay = initialDelay // per-element transition delay, in milliseconds
+//     } = {}) {
+//       // Compute values.
+//       const X = d3.map(data, x);
+//       const Y = d3.map(data, y);
+
+//       // Compute default domains, and unique the x-domain.
+//       if (xDomain === undefined) xDomain = X;
+//       if (yDomain === undefined) yDomain = [0, d3.max(Y)];
+//       xDomain = new d3.InternSet(xDomain);
+
+//       // Omit any data not present in the x-domain.
+//       const I = d3.range(X.length).filter(i => xDomain.has(X[i]));
+
+//       // Update scale domains.
+//       xScale.domain(xDomain);
+//       yScale.domain(yDomain);
+
+//       // Start a transition.
+//       const t = svg.transition().duration(duration);
+
+//       // Join the data, applying enter and exit.
+//       rect = rect
+//         .data(I, function (i) { return this.tagName === "rect" ? this.key : X[i]; })
+//         .join(
+//           enter => enter.append("rect")
+//             .property("key", i => X[i]) // for future transitions
+//             .call(position, i => xScale(X[i]), yScale(0))
+//             .style("mix-blend-mode", "multiply")
+//             .call(enter => enter.append("title")),
+//           update => update,
+//           exit => exit.transition(t)
+//             .delay(delay)
+//             .attr("y", yScale(0))
+//             .attr("height", 0)
+//             .remove()
+//         );
+
+//       // Update the title text on all entering and updating bars.
+//       rect.select("title")
+//         .text(i => [X[i], format(Y[i])].join("\n"));
+
+//       // Transition entering and updating bars to their new position. Note
+//       // that this assumes that the input data and the x-domain are in the
+//       // same order, or else the ticks and bars may have different delays.
+//       rect.transition(t)
+//         .delay(delay)
+//         .call(position, i => xScale(X[i]), i => yScale(Y[i]));
+
+//       // Transition the x-axis (using a possibly staggered delay per tick).
+//       xGroup.transition(t)
+//         .call(xAxis)
+//         .call(g => g.selectAll(".tick").delay(delay));
+
+//       // Transition the y-axis, then post process for grid lines etc.
+//       yGroup.transition(t)
+//         .call(yAxis)
+//         .selection()
+//         .call(g => g.select(".domain").remove())
+//         .call(g => g.selectAll(".tick").selectAll(".grid").data([,]).join(grid));
+//     }
+//   });
+// }
 
 export default GraphPage
