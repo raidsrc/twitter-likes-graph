@@ -17,7 +17,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <div>
-          <h1>Raid's Twitter Likes Graph</h1>
+          <h1>Raid&apos;s Twitter Likes Graph</h1>
           {/* <button className={styles.card} onClick={() => {fetchLikes(setStatus); setStatus("Loading...")}}>Click me to fetch @raidsrc's Twitter likes.</button> */}
           {/* <h2>This web application produces data visualizations based on my Twitter likes. </h2> */}
           {/* <h3>It's a decent amount of data. 17.2k likes. This'll be fun.</h3> */}
