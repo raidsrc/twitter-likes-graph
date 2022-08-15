@@ -10,7 +10,7 @@ const parseTime = d3.timeParse("%d-%b-%y");
 import BarChart from "../components/Chart1"
 import BarChart2 from '../components/Chart2'
 import Histogram from '../components/Histogram'
-
+import D3BarChart from "../components/D3BarChart"
 
 const GraphPage: NextPage = () => {
   const [data, setData] = useState("")
@@ -27,13 +27,15 @@ const GraphPage: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        
+
         <div>
           {/* <Histogram /> */}
-          <iframe width="100%" height="635" frameBorder="0"
-  src="https://observablehq.com/embed/@d3/sortable-bar-chart?cell=viewof+order&cell=chart"></iframe>
+          {/* <iframe width="100%" height="635" frameBorder="0"
+  src="https://observablehq.com/embed/@d3/sortable-bar-chart?cell=viewof+order&cell=chart"></iframe> */}
+          <D3BarChart />
+
         </div>
-          
+
         <Link href="/">go back</Link>
         <div >
           AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
