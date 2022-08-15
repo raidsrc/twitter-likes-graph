@@ -7,11 +7,17 @@ function BarChart2() {
 
   useEffect(() => {
     const chart = BarChart([
-      { "A": 120 },
-      { "B": 14 },
-      { "C": 15 },
-      { "D": 185 },
-    ])
+      { "letter": "A", "frequency": "120" },
+      { "letter": "B", "frequency": "240" },
+      { "letter": "C", "frequency": "320" },
+      { "letter": "D", "frequency": "420" },
+    ], {
+      x: d => d.letter,
+      y: d => d.frequency,
+      yFormat: "%",
+      yLabel: "↑ Frequency",
+      color: "steelblue"
+    })
     if (graphRef.current !== null) graphRef.current.append(chart)
   }, [])
 
@@ -109,7 +115,7 @@ function BarChart2() {
   return (
     <div>
       <div>
-        
+
       </div>
       <div ref={graphRef} className={styles.graph} />
     </div>
