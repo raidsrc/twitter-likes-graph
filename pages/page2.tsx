@@ -11,6 +11,7 @@ import BarChart from "../components/Chart1"
 import BarChart2 from '../components/Chart2'
 import Histogram from '../components/Histogram'
 import D3BarChart from "../components/D3BarChart"
+import D3Histogram from "../components/D3Histogram"
 
 const GraphPage: NextPage = () => {
   const [data, setData] = useState("")
@@ -32,7 +33,8 @@ const GraphPage: NextPage = () => {
           {/* <Histogram /> */}
           {/* <iframe width="100%" height="635" frameBorder="0"
   src="https://observablehq.com/embed/@d3/sortable-bar-chart?cell=viewof+order&cell=chart"></iframe> */}
-          <D3BarChart />
+          {/* <D3BarChart /> */}
+          <D3Histogram />
 
         </div>
 

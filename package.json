@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@d3/bar-chart-transitions": "https://api.observablehq.com/@d3/bar-chart-transitions.tgz?v=3",
+    "@d3/histogram": "https://api.observablehq.com/@d3/histogram.tgz?v=3",
     "@observablehq/runtime": "^4.23.0",
     "@types/d3": "^7.4.0",
     "d3": "^7.6.1",
+    "eee867f901895c46": "https://api.observablehq.com/d/eee867f901895c46.tgz?v=3",
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0"
