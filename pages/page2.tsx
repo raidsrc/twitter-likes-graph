@@ -8,6 +8,7 @@ import * as d3 from "d3"
 import "d3-time-format"
 const parseTime = d3.timeParse("%d-%b-%y");
 import BarChart from "../components/Chart1"
+import BarChart2 from '../components/Chart2'
 
 
 const GraphPage: NextPage = () => {

@@ -36,16 +36,16 @@ function BarChart() {
       .attr("fill", "red")
 
     const x = d3.scaleLinear()
-      .domain([0, 500])     // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
-      .range([0, 500]);
+      .domain([0, 100])     // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
+      .range([0, width - margins.left - margins.right]);
     bruh.append("g")
       .attr("transform", `translate(${margins.left}, ${height - margins.bottom})`)
       .attr("color", "blue")
       .call(d3.axisBottom(x));
 
     const y = d3.scaleLinear()
-      .domain([0, 300])
-      .range([400, 0])
+      .domain([0, 100])
+      .range([height - margins.top - margins.bottom, 0])
     bruh.append("g")
       .attr("transform", `translate(${margins.left}, ${margins.top})`)
       .attr("color", "blue")
