@@ -3,10 +3,16 @@ import * as d3 from "d3"
 import styles from '../styles/Chart.module.css'
 
 function BarChart2() {
-  useEffect(() => {
-
-  }, [])
   const graphRef = useRef(null)
+
+  useEffect(() => {
+    const chart = BarChart([
+      { "A": 12 },
+      { "B": 14 },
+      { "C": 15 }
+    ])
+    graphRef.current.append(chart)
+  }, [])
 
   // Copyright 2021 Observable, Inc.
   // Released under the ISC license.
@@ -102,11 +108,7 @@ function BarChart2() {
   return (
     <div>
       <div>
-        {BarChart([
-          { "A": 12 },
-          { "B": 14 },
-          { "C": 15 }
-        ])}
+        
       </div>
       <div ref={graphRef} className={styles.graph} />
     </div>

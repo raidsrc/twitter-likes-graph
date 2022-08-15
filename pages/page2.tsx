@@ -28,7 +28,7 @@ const GraphPage: NextPage = () => {
       <main className={styles.main}>
         
         <div>
-          <BarChart />
+          <BarChart2 />
         </div>
           
         <Link href="/">go back</Link>
