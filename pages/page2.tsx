@@ -26,10 +26,12 @@ const GraphPage: NextPage = () => {
 
       <main className={styles.main}>
         
-        <BarChart />
+        <div>
+          <BarChart />
+        </div>
           
         <Link href="/">go back</Link>
-        <div onClick={() => { loadLikes(setData) }}>
+        <div >
           AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
           {data}
         </div>
