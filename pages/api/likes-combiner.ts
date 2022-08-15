@@ -13,8 +13,8 @@ type LikesObjectThing = {
   next_token: string
 }
 
-type reformed = {
-  [key: string] : {
+export type reformed = {
+  [key: number] : {
     created_at: string
     text: string 
   }

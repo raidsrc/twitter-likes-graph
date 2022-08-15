@@ -17,7 +17,7 @@ type FetchLikesQuery = {
 
 export type TwitterLikeObject = {
   created_at: string,
-  id: string,
+  id: number,
   text: string
 }
 

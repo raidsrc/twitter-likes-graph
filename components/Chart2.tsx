@@ -1,5 +1,6 @@
 import { MutableRefObject, useEffect, useRef } from "react"
 import * as d3 from "d3"
+
 import styles from '../styles/Chart.module.css'
 
 function BarChart2() {

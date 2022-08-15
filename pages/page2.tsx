@@ -9,6 +9,7 @@ import "d3-time-format"
 const parseTime = d3.timeParse("%d-%b-%y");
 import BarChart from "../components/Chart1"
 import BarChart2 from '../components/Chart2'
+import Histogram from '../components/Histogram'
 
 
 const GraphPage: NextPage = () => {
@@ -28,7 +29,9 @@ const GraphPage: NextPage = () => {
       <main className={styles.main}>
         
         <div>
-          <BarChart2 />
+          {/* <Histogram /> */}
+          <iframe width="100%" height="635" frameBorder="0"
+  src="https://observablehq.com/embed/@d3/sortable-bar-chart?cell=viewof+order&cell=chart"></iframe>
         </div>
           
         <Link href="/">go back</Link>

@@ -13,6 +13,8 @@ export const config = {
   }
 }
 
+// these routes are named confusingly so here's what this one does: get all the likes from all the like files and print out the combined content of all the like.json files 
+
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Response>
