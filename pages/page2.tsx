@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 import styles from '../styles/Home.module.css'
+import styles2 from '../styles/Chart.module.css'
 import * as d3 from "d3"
 import "d3-time-format"
 const parseTime = d3.timeParse("%d-%b-%y");
@@ -12,10 +13,116 @@ import BarChart2 from '../components/Chart2'
 import Histogram from '../components/Histogram'
 import D3BarChart from "../components/D3BarChart"
 import D3Histogram from "../components/D3Histogram"
+import { MyResponsiveBar } from "../components/nivo"
 
 const GraphPage: NextPage = () => {
-  const [data, setData] = useState("")
-
+  const data = [
+    {
+      "country": "AD",
+      "hot dog": 165,
+      "hot dogColor": "hsl(54, 70%, 50%)",
+      "burger": 167,
+      "burgerColor": "hsl(147, 70%, 50%)",
+      "sandwich": 41,
+      "sandwichColor": "hsl(94, 70%, 50%)",
+      "kebab": 91,
+      "kebabColor": "hsl(228, 70%, 50%)",
+      "fries": 63,
+      "friesColor": "hsl(67, 70%, 50%)",
+      "donut": 157,
+      "donutColor": "hsl(6, 70%, 50%)"
+    },
+    {
+      "country": "AE",
+      "hot dog": 29,
+      "hot dogColor": "hsl(327, 70%, 50%)",
+      "burger": 91,
+      "burgerColor": "hsl(197, 70%, 50%)",
+      "sandwich": 24,
+      "sandwichColor": "hsl(155, 70%, 50%)",
+      "kebab": 35,
+      "kebabColor": "hsl(220, 70%, 50%)",
+      "fries": 35,
+      "friesColor": "hsl(229, 70%, 50%)",
+      "donut": 74,
+      "donutColor": "hsl(31, 70%, 50%)"
+    },
+    {
+      "country": "AF",
+      "hot dog": 37,
+      "hot dogColor": "hsl(195, 70%, 50%)",
+      "burger": 56,
+      "burgerColor": "hsl(141, 70%, 50%)",
+      "sandwich": 8,
+      "sandwichColor": "hsl(190, 70%, 50%)",
+      "kebab": 63,
+      "kebabColor": "hsl(101, 70%, 50%)",
+      "fries": 19,
+      "friesColor": "hsl(167, 70%, 50%)",
+      "donut": 169,
+      "donutColor": "hsl(241, 70%, 50%)"
+    },
+    {
+      "country": "AG",
+      "hot dog": 51,
+      "hot dogColor": "hsl(141, 70%, 50%)",
+      "burger": 191,
+      "burgerColor": "hsl(299, 70%, 50%)",
+      "sandwich": 40,
+      "sandwichColor": "hsl(146, 70%, 50%)",
+      "kebab": 7,
+      "kebabColor": "hsl(321, 70%, 50%)",
+      "fries": 138,
+      "friesColor": "hsl(215, 70%, 50%)",
+      "donut": 145,
+      "donutColor": "hsl(338, 70%, 50%)"
+    },
+    {
+      "country": "AI",
+      "hot dog": 181,
+      "hot dogColor": "hsl(97, 70%, 50%)",
+      "burger": 148,
+      "burgerColor": "hsl(221, 70%, 50%)",
+      "sandwich": 66,
+      "sandwichColor": "hsl(271, 70%, 50%)",
+      "kebab": 106,
+      "kebabColor": "hsl(87, 70%, 50%)",
+      "fries": 146,
+      "friesColor": "hsl(173, 70%, 50%)",
+      "donut": 120,
+      "donutColor": "hsl(243, 70%, 50%)"
+    },
+    {
+      "country": "AL",
+      "hot dog": 24,
+      "hot dogColor": "hsl(341, 70%, 50%)",
+      "burger": 189,
+      "burgerColor": "hsl(184, 70%, 50%)",
+      "sandwich": 51,
+      "sandwichColor": "hsl(245, 70%, 50%)",
+      "kebab": 137,
+      "kebabColor": "hsl(47, 70%, 50%)",
+      "fries": 142,
+      "friesColor": "hsl(2, 70%, 50%)",
+      "donut": 159,
+      "donutColor": "hsl(14, 70%, 50%)"
+    },
+    {
+      "country": "AM",
+      "hot dog": 113,
+      "hot dogColor": "hsl(110, 70%, 50%)",
+      "burger": 162,
+      "burgerColor": "hsl(250, 70%, 50%)",
+      "sandwich": 32,
+      "sandwichColor": "hsl(315, 70%, 50%)",
+      "kebab": 127,
+      "kebabColor": "hsl(98, 70%, 50%)",
+      "fries": 8,
+      "friesColor": "hsl(210, 70%, 50%)",
+      "donut": 175,
+      "donutColor": "hsl(249, 70%, 50%)"
+    }
+  ]
   useEffect(() => {
     // createGraph()
   }, [])
@@ -29,19 +136,13 @@ const GraphPage: NextPage = () => {
 
       <main className={styles.main}>
 
-        <div>
-          {/* <Histogram /> */}
-          {/* <iframe width="100%" height="635" frameBorder="0"
-  src="https://observablehq.com/embed/@d3/sortable-bar-chart?cell=viewof+order&cell=chart"></iframe> */}
-          {/* <D3BarChart /> */}
-          <D3Histogram />
-
+        <div className={styles2.barchart}>
+          <MyResponsiveBar data={data}/>
         </div>
 
         <Link href="/">go back</Link>
         <div >
           AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-          {data}
         </div>
       </main>
 
