@@ -1,17 +1,18 @@
-import { useEffect, useRef } from "react"
+import { MutableRefObject, useEffect, useRef } from "react"
 import * as d3 from "d3"
 import styles from '../styles/Chart.module.css'
 
 function BarChart2() {
-  const graphRef = useRef(null)
+  const graphRef = useRef<null | HTMLDivElement>(null)
 
   useEffect(() => {
     const chart = BarChart([
-      { "A": 12 },
+      { "A": 120 },
       { "B": 14 },
-      { "C": 15 }
+      { "C": 15 },
+      { "D": 185 },
     ])
-    graphRef.current.append(chart)
+    if (graphRef.current !== null) graphRef.current.append(chart)
   }, [])
 
   // Copyright 2021 Observable, Inc.
