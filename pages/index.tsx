@@ -36,7 +36,7 @@ const Home: NextPage = () => {
 
         <div>
           <Link href="/page2" ><a className={styles.link}>Check it out &rarr;</a></Link> <br />
-          <Link href="/pie-chart" ><a className={styles.link}>i am absolutely infuriated. simply incensed. in a fit of rage. how could this be</a></Link>
+          <Link href="/bar-chart" ><a className={styles.link}>i am absolutely infuriated. simply incensed. in a fit of rage. how could this be</a></Link>
         </div>
 
 
