@@ -35,12 +35,15 @@ function prepareForGraphing (list_of_tweets: Array<NewTwitterLikeObject>) {
       lolol[dateString] = 0
     }
   })
-  return lolol
+  for (const [month, tweets] of Object.entries(lolol)) {
+    lol.push({month: month, number_of_tweets: tweets})
+  }
+  return lol
 }
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<fuck2>
+  res: NextApiResponse<Array<fuck>>
 ) {
   
   const pathToLikesFile = path.join(process.cwd(), "likes", "likes-all-complete.json")
