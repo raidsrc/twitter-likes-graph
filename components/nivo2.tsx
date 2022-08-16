@@ -19,7 +19,7 @@ export const MyResponsiveBar = ({ data /* see data tab */ }) => (
       'fries',
       'donut'
     ]}
-    indexBy="country"
+    indexBy="year_tweeted"
     margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
     padding={0.3}
     valueScale={{ type: 'linear' }}
@@ -74,15 +74,15 @@ export const MyResponsiveBar = ({ data /* see data tab */ }) => (
       tickSize: 5,
       tickPadding: 5,
       tickRotation: 0,
-      legend: 'country',
+      legend: 'year tweeted',
       legendPosition: 'middle',
-      legendOffset: 32
+      legendOffset: 30
     }}
     axisLeft={{
       tickSize: 5,
       tickPadding: 5,
       tickRotation: 0,
-      legend: 'food',
+      legend: 'number o tweets',
       legendPosition: 'middle',
       legendOffset: -40
     }}
