@@ -8,7 +8,7 @@ import { ResponsiveBar } from '@nivo/bar'
 // website examples showcase many properties,
 // you'll often use just a few of them.
 
-export const MyResponsiveBar = ({ data }) => (
+const MyResponsiveBar = ({ data }) => (
   <ResponsiveBar
     data={data}
     indexBy="month"
@@ -59,6 +59,8 @@ export const MyResponsiveBar = ({ data }) => (
     
   />
 )
+
+export default MyResponsiveBar
 
 // export const MyResponsiveBar = ({ data /* see data tab */ }) => (
 //   <ResponsiveBar

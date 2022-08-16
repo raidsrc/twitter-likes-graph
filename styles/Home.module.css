@@ -118,6 +118,11 @@
   align-items: center;
 }
 
+.divchart {
+  height: 100vh;
+  margin: 4rem;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
