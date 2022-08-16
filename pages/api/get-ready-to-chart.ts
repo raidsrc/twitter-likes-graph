@@ -11,35 +11,10 @@ export type NewTwitterLikeObject = {
   created_at: string 
   text: string 
 }
-type fuck = {
-  month: string 
-  number_of_tweets: number 
-}
-
-function prepareForGraphing (list_of_tweets: Array<NewTwitterLikeObject>) {
-  // get array of twitter likes. loop thru and see how many there are for a given month. return array with objects that look like {time_period: x, number_of_tweets: y}
-  let lol = []
-  // let lolol = {
-  //   "2021/12": 3
-  // }
-  let lolol: {
-    [date: string] : number
-  } = {}
-  list_of_tweets.forEach(element => {
-    let date = new Date(element.created_at)
-    let dateString = String(date.getFullYear()) + "/" + String(date.getMonth()+1)
-    if (Object.keys(lolol).includes(dateString)) {
-      lolol[dateString] += 1
-    } else {
-      lolol[dateString] = 0
-    }
-  })
-  return lolol
-}
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Array<fuck>>
+  res: NextApiResponse<Array<NewTwitterLikeObject>>
 ) {
   
   const pathToLikesFile = path.join(process.cwd(), "likes", "likes-all-complete.json")
@@ -52,8 +27,7 @@ export default async function handler(
       ...value
     })
   }
-  const graphThis = prepareForGraphing(newShit)
 
-  res.status(200).json(graphThis)
+  res.status(200).json(newShit)
 
 }
