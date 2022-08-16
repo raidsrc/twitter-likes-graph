@@ -15,6 +15,9 @@ type fuck = {
   month: string 
   number_of_tweets: number 
 }
+type fuck2 = {
+  [date: string] : number
+}
 
 function prepareForGraphing (list_of_tweets: Array<NewTwitterLikeObject>) {
   // get array of twitter likes. loop thru and see how many there are for a given month. return array with objects that look like {time_period: x, number_of_tweets: y}
@@ -22,9 +25,7 @@ function prepareForGraphing (list_of_tweets: Array<NewTwitterLikeObject>) {
   // let lolol = {
   //   "2021/12": 3
   // }
-  let lolol: {
-    [date: string] : number
-  } = {}
+  let lolol: fuck2 = {}
   list_of_tweets.forEach(element => {
     let date = new Date(element.created_at)
     let dateString = String(date.getFullYear()) + "/" + String(date.getMonth()+1)
@@ -39,7 +40,7 @@ function prepareForGraphing (list_of_tweets: Array<NewTwitterLikeObject>) {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Array<fuck>>
+  res: NextApiResponse<fuck2>
 ) {
   
   const pathToLikesFile = path.join(process.cwd(), "likes", "likes-all-complete.json")
