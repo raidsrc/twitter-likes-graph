@@ -5,8 +5,17 @@ import Link from 'next/link'
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import styles2 from '../styles/Chart.module.css'
+import { VictoryAxis, VictoryChart, VictoryHistogram } from 'victory'
+import { NewTwitterLikeObject } from './api/fetch-local-twitter-likes'
+import * as d3 from "d3"
 // import MyResponsiveBar from '../components/nivo2'
 
+type NewNewTwitterLikeObject = {
+  id: string
+  created_at: string 
+  text: string 
+  created_at_date: Date
+}
 
 const GraphPage: NextPage = () => {
   const [realData, setRealData] = useState({})
@@ -16,8 +25,17 @@ const GraphPage: NextPage = () => {
     // createGraph()
     // processData()
     // console.log(newData2)
+    let newRealDataWithDate: Array<NewNewTwitterLikeObject> = []
     getRealData().then((theData) => {
-      setRealData(theData)
+      for (let i = 0; i < theData.length; i++) {
+        let abc = {
+          ...theData[i],
+          created_at_date: new Date(theData[i].created_at)
+        }
+        newRealDataWithDate.push(abc)
+      }
+      console.log(newRealDataWithDate[420])
+      setRealData(newRealDataWithDate)
     })
   }, [])
   return (
@@ -31,7 +49,11 @@ const GraphPage: NextPage = () => {
       <main className={styles.main}>
 
         <div className={styles2.barchart}>
-          
+          <VictoryChart>
+            {/* <VictoryAxis tickValues={[1, 2, 3, 4]} tickFormat={["Quarter 1", "Quarter 2", "Quarter 3", "Quarter 4"]} /> */}
+            {/* <VictoryAxis dependentAxis tickFormat={(x: any) => (`$${x / 10}k`)} /> */}
+            <VictoryHistogram data={[{a:1},{a:3},{a:6},{a:3}]} x={"a"}/>
+          </VictoryChart>
         </div>
 
         <Link href="/">go back</Link>
@@ -44,7 +66,7 @@ const GraphPage: NextPage = () => {
 }
 
 async function getRealData() {
-  let response = await (await fetch("api/fetch-local-twitter-likes")).json()
+  let response: Array<NewTwitterLikeObject> = await (await fetch("api/fetch-local-twitter-likes")).json()
   return response
 }
 

@@ -43,7 +43,7 @@ function prepareForGraphing (list_of_tweets: Array<NewTwitterLikeObject>) {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Array<fuck>>
+  res: NextApiResponse<Array<NewTwitterLikeObject>>
 ) {
   
   const pathToLikesFile = path.join(process.cwd(), "likes", "likes-all-complete.json")
@@ -56,8 +56,8 @@ export default async function handler(
       ...value
     })
   }
-  const graphThis = prepareForGraphing(newShit)
+  //const graphThis = prepareForGraphing(newShit)
 
-  res.status(200).json(graphThis)
+  res.status(200).json(newShit)
 
 }
