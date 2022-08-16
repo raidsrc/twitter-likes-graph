@@ -180,7 +180,7 @@ const GraphPage: NextPage = () => {
       <main className={styles.main}>
 
         <div className={styles2.barchart}>
-          <MyResponsiveBar data={data} />
+          <MyResponsiveBar data={realData} />
         </div>
 
         <Link href="/">go back</Link>
