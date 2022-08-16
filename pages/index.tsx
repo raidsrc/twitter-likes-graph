@@ -31,7 +31,6 @@ const Home: NextPage = () => {
             <li>set up an etl pipeline to snag data from twitter at the click of a button that the viewer of the page runs whenever they want and checks for new likes and verifies them against old likes and loads everything into a database (mongodb? redis upstash?)</li>
             <li>make everything SUPER pretty</li>
             <li>write up a couple blurbs on how i did it and put them all over the pages </li>
-            <li>figure out how the hell to use d3 </li>
           </ol>
         </div>
 
