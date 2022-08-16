@@ -4,8 +4,15 @@ import Link from 'next/link'
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import styles2 from '../styles/Chart.module.css'
-import dynamic from "next/dynamic";
-import BarChart from "../components/realBarChart"
+import { VictoryBar } from "victory"
+
+const data = [
+  {quarter: 1, earnings: 13000},
+  {quarter: 2, earnings: 16500},
+  {quarter: 3, earnings: 14250},
+  {quarter: 4, earnings: 19000}
+];
+
 
 const BarChartPage: NextPage = () => {
   const data = [
@@ -133,7 +140,7 @@ const BarChartPage: NextPage = () => {
       <main className={styles.main}>
 
         <div className={styles2.barchart}>
-          <BarChart data={realData2}/>
+          <VictoryBar />
         </div>
 
         <Link href="/">go back</Link>
