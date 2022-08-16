@@ -20,7 +20,7 @@ const Home: NextPage = () => {
           {/* <button className={styles.card} onClick={() => {fetchLikes(setStatus); setStatus("Loading...")}}>Click me to fetch @raidsrc's Twitter likes.</button> */}
           {/* <h2>This web application produces data visualizations based on my Twitter likes. </h2> */}
           {/* <h3>It's a decent amount of data. 17.2k likes. This'll be fun.</h3> */}
-          <p>Ok, since this web app is still under constructions, I'll use this page as a notepad to draft up notes on what this app should do.
+          <p>{"Ok, since this web app is still under constructions, I'll use this page as a notepad to draft up notes on what this app should do."}
           </p>
           <p>
             todo:
