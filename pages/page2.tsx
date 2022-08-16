@@ -14,9 +14,10 @@ import Histogram from '../components/Histogram'
 import D3BarChart from "../components/D3BarChart"
 import D3Histogram from "../components/D3Histogram"
 import dynamic from "next/dynamic";
-const MyResponsiveBar = dynamic(
-  () => import("../components/nivo2").then((mod) => {mod.MyResponsiveBar}), {ssr: false}
-)
+import { MyResponsiveBar } from '../components/nivo2'
+// const MyResponsiveBar = dynamic(
+//   () => import("../components/nivo2").then((mod) => {mod.MyResponsiveBar}), {ssr: false}
+// )
 
 const GraphPage: NextPage = () => {
   const data = [
