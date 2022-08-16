@@ -51,10 +51,10 @@ const GraphPage: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-      <h1>Amount of Liked Twitter Posts Over Time for @raidsrc</h1>
+        <h1>Twitter Usage by <a className={styles.link} href="https://twitter.com/raidsrc">@raidsrc</a> Across The Years</h1>
         <div className={styles2.barchart}>
           <VictoryChart domainPadding={10}
-          padding={{ left: 70, right: 10 }}
+            padding={{ left: 70, right: 10 }}
           >
             {/* <VictoryAxis tickValues={bins} tickFormat={(t: Date) => {String(t)}} /> */}
             {/* <VictoryAxis dependentAxis tickValues={[500, 1000, 1500, 2000]} label="Number of Tweets" axisLabelComponent={<VictoryLabel dy={-20} />} /> */}
@@ -64,8 +64,17 @@ const GraphPage: NextPage = () => {
             {/* <VictoryLabel x={10} y={180} text="Number of Tweets" angle={270}/> */}
           </VictoryChart>
         </div>
+        <div className={styles.textBlurb}>
+          <ul>
+            <li> The x-axis represents 3-month periods as bins. Years are labeled.</li>
+            <li> The y-axis represents the number of tweets @raidsrc liked during a given time period. </li>
+          </ul>
+          <p>As you can see, @raidsrc was a Twitter addict during late high school and early college (late 2017 - early 2019), chilled out a bit as college went on (2019 - early 2020), returned to Twitter in full force when lockdown hit because of course he did (mid-2020 - 2021), and is now weaning himself off Twitter (late 2021 - 2022). </p>
+          <p>OK. Enough talking in the 3rd person. @raidsrc is me. I made this graph because I was curious. Also because I wanted to experiment with swinging around a medium sized dataset. </p>
+          <p>That massive spike that occurred during the last 3 months of 2020 is crazy. It matches up with a sharp decline in my mental health that hit me pretty hard during the pandemic. My mental health throughout the entire pandemic was abysmal, but the end of 2020 was the worst of it. Stuck at home feeling bored. Fed up with Zoom university. Tired of arguing with my parents. It's freezing outside. Haven't seen my friends in a long time. Generally miserable. Worried about the state of the world. And much more. I'm better now, but damn. Looks like I did the worst thing imaginable and hopped on social media. Not a good way to nurture your mental. </p>
+        </div>
 
-        <Link href="/">go back</Link>
+        <Link href="/"><a className={styles.link}>&larr; go back</a></Link>
       </main>
     </div>
   )

@@ -16,27 +16,31 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <div>
-          <h1>Raid&apos;s Twitter Likes Graph</h1>
+          <h1><a className={styles.link} href="https://twitter.com/raidsrc">@raidsrc</a>{"'s Twitter Likes Graph"}</h1>
           {/* <button className={styles.card} onClick={() => {fetchLikes(setStatus); setStatus("Loading...")}}>Click me to fetch @raidsrc's Twitter likes.</button> */}
           {/* <h2>This web application produces data visualizations based on my Twitter likes. </h2> */}
           {/* <h3>It's a decent amount of data. 17.2k likes. This'll be fun.</h3> */}
-          <p>{"Ok, since this web app is still under constructions, I'll use this page as a notepad to draft up notes on what this app should do."}
-          </p>
-          <p>
-            todo:
-          </p>
-          <ol>
-            <li> pretty page transitions and animations for the graph </li>
-            <li>need to transform my twitter likes data into something graphable (csv?)</li>
-            <li>set up an etl pipeline to snag data from twitter at the click of a button that the viewer of the page runs whenever they want and checks for new likes and verifies them against old likes and loads everything into a database (mongodb? redis upstash?)</li>
-            <li>make everything SUPER pretty</li>
-            <li>write up a couple blurbs on how i did it and put them all over the pages </li>
-          </ol>
+
+          <div className={styles.textBlurb}>
+            <p>{"Ok, since this web app is still under construction, I'll use this page as a notepad to draft up notes on what this app should do."}
+            </p>
+            <p>
+              todo:
+            </p>
+            <ol>
+              <li> pretty page transitions and animations for the graph </li>
+              <li>need to transform my twitter likes data into something graphable (csv?)</li>
+              <li>set up an etl pipeline to snag data from twitter at the click of a button that the viewer of the page runs whenever they want and checks for new likes and verifies them against old likes and loads everything into a database (mongodb? redis upstash?)</li>
+              <li>make everything SUPER pretty</li>
+              <li>write up a couple blurbs on how i did it and put them all over the pages </li>
+            </ol>
+          </div>
+
         </div>
 
         <div>
           <Link href="/page2" ><a className={styles.link}>Check it out &rarr;</a></Link> <br />
-          <Link href="/bar-chart" ><a className={styles.link}>i am absolutely infuriated. simply incensed. in a fit of rage. how could this be</a></Link>
+          {/* <Link href="/bar-chart" ><a className={styles.link}>i am absolutely infuriated. simply incensed. in a fit of rage. how could this be</a></Link> */}
         </div>
 
 
