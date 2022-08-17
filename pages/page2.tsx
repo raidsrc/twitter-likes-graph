@@ -36,7 +36,9 @@ const GraphPage: NextPage<Array<NewNewTwitterLikeObject>> = () => {
   }, [])
 
   // const d3TimeScaleFunction = d3.scaleTime().domain([new Date("2017-01-01T08:00Z"), new Date("2023-01-02T08:00Z")])
-  const d3TimeScaleFunction = d3.scaleTime().domain(d3.extent(realData, datum => datum.created_at_date))
+
+  const extentOfDates = d3.extent(realData, datum => datum.created_at_date)
+  const d3TimeScaleFunction = d3.scaleTime().domain(extentOfDates as [Date, Date])
   const bins = d3.utcTicks(new Date(Date.UTC(2017, 0)), new Date(Date.UTC(2023, 0)), 20)
   return (
     <div className={styles.container}>
