@@ -16,22 +16,23 @@ type NewNewTwitterLikeObject = {
   created_at_date: Date
 }
 
-const GraphPage: NextPage<Array<NewNewTwitterLikeObject>> = ({ data }) => {
+const GraphPage: NextPage<Array<NewNewTwitterLikeObject>> = () => {
   const [realData, setRealData] = useState([{ id: "", created_at: "", text: "", created_at_date: new Date() }])
   useEffect(() => {
     // createGraph()
     // processData()
     // console.log(newData2)
-    let newRealDataWithDate: Array<NewNewTwitterLikeObject> = []
-    for (let i = 0; i < data.length; i++) {
-      let abc = {
-        ...data[i],
-        created_at_date: new Date(data[i].created_at)
+    getRealData().then((theData) => {
+      let newRealDataWithDate: Array<NewNewTwitterLikeObject> = []
+      for (let i = 0; i < theData.length; i++) {
+        let abc = {
+          ...theData[i],
+          created_at_date: new Date(theData[i].created_at)
+        }
+        newRealDataWithDate.push(abc)
       }
-      newRealDataWithDate.push(abc)
-    }
-    setRealData(newRealDataWithDate)
-
+      setRealData(newRealDataWithDate)
+    })
   }, [])
 
   // const d3TimeScaleFunction = d3.scaleTime().domain([new Date("2017-01-01T08:00Z"), new Date("2023-01-02T08:00Z")])
@@ -83,17 +84,17 @@ async function getRealData() {
 
 export default GraphPage
 
-export async function getStaticProps() {
-  const data = await getRealData()
-  // let newRealDataWithDate: Array<NewNewTwitterLikeObject> = []
-  // for (let i = 0; i < props.length; i++) {
-  //   let abc = {
-  //     ...props[i],
-  //     created_at_date: new Date(props[i].created_at)
-  //   }
-  //   newRealDataWithDate.push(abc)
-  // }
-  // return { props: { data: newRealDataWithDate } }
-  return { props: { data } }
-}
+// export async function getStaticProps() {
+//   const data = await getRealData()
+//   // let newRealDataWithDate: Array<NewNewTwitterLikeObject> = []
+//   // for (let i = 0; i < props.length; i++) {
+//   //   let abc = {
+//   //     ...props[i],
+//   //     created_at_date: new Date(props[i].created_at)
+//   //   }
+//   //   newRealDataWithDate.push(abc)
+//   // }
+//   // return { props: { data: newRealDataWithDate } }
+//   return { props: { data } }
+// }
 
