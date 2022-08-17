@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
 import { Dispatch, SetStateAction, useState } from 'react'
 import styles from '../styles/Home.module.css'
@@ -28,9 +27,8 @@ const Home: NextPage = () => {
               todo:
             </p>
             <ol>
-              <li> pretty page transitions and animations for the graph </li>
-              <li>need to transform my twitter likes data into something graphable (csv?)</li>
               <li>set up an etl pipeline to snag data from twitter at the click of a button that the viewer of the page runs whenever they want and checks for new likes and verifies them against old likes and loads everything into a database (mongodb? redis upstash?)</li>
+              <li> pretty page transitions and animations for the graph </li>
               <li>make everything SUPER pretty</li>
               <li>write up a couple blurbs on how i did it and put them all over the pages </li>
             </ol>
@@ -39,7 +37,7 @@ const Home: NextPage = () => {
         </div>
 
         <div>
-          <Link href="/page2" ><a className={styles.link}>Check it out &rarr;</a></Link> <br />
+          <Link href="/why" ><a className={styles.link}>Check it out &rarr;</a></Link> <br />
           {/* <Link href="/bar-chart" ><a className={styles.link}>i am absolutely infuriated. simply incensed. in a fit of rage. how could this be</a></Link> */}
         </div>
 
