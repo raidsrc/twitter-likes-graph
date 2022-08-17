@@ -4,6 +4,7 @@
 }
 
 .barchart {
-  height: 800px;
-  width: 800px;
+  /* height: 800px; */
+  width: 100%;
+  max-width: 60rem;
 }

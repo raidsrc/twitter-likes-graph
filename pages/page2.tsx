@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Dispatch, PropsWithoutRef, SetStateAction, useEffect, useRef, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import styles2 from '../styles/Chart.module.css'
-import { VictoryAxis, VictoryChart, VictoryHistogram, VictoryLabel, VictoryLegend } from 'victory'
+import { VictoryAxis, VictoryChart, VictoryHistogram, VictoryLabel, VictoryTheme } from 'victory'
 import { NewTwitterLikeObject } from './api/fetch-local-twitter-likes'
 import * as d3 from "d3"
 // import MyResponsiveBar from '../components/nivo2'
@@ -51,17 +51,18 @@ const GraphPage: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1>Twitter Usage by <a className={styles.link} href="https://twitter.com/raidsrc">@raidsrc</a> Across The Years</h1>
+        <h1>Twitter Usage by <a className={styles.link} rel="noopener noreferrer" target="_blank" href="https://twitter.com/raidsrc">@raidsrc</a> Across The Years</h1>
         <div className={styles2.barchart}>
-          <VictoryChart domainPadding={10}
-            padding={{ left: 70, right: 10 }}
+          <VictoryChart domainPadding={10} theme={VictoryTheme.material}
+            padding={{left:70, right:10, top:20, bottom:40}}
           >
-            {/* <VictoryAxis tickValues={bins} tickFormat={(t: Date) => {String(t)}} /> */}
-            {/* <VictoryAxis dependentAxis tickValues={[500, 1000, 1500, 2000]} label="Number of Tweets" axisLabelComponent={<VictoryLabel dy={-20} />} /> */}
-            {/* <VictoryAxis tickValues={bins} tickCount={6} tickFormat={(tick) => `${(new Date(tick)).getFullYear()}`} label="Year Tweeted" axisLabelComponent={<VictoryLabel dy={10} />} /> */}
-            <VictoryHistogram data={realData} x={"created_at_date"} bins={bins} />
             {/* <VictoryLabel x={200} y={290} text="Year Tweeted" /> */}
             {/* <VictoryLabel x={10} y={180} text="Number of Tweets" angle={270}/> */}
+            {/* <VictoryAxis tickValues={bins} tickFormat={(t: Date) => {String(t)}} /> */}
+            {realData.length === 1 ? <VictoryLabel text="Loading..." x={165} y={150} style={{fill: "#f4511e", fontSize: "20px"}} /> : <div />}
+            <VictoryAxis dependentAxis tickValues={[500, 1000, 1500, 2000]} tickFormat={(tick: number) => `${tick.toLocaleString()}`} label="Number of Tweets" axisLabelComponent={<VictoryLabel dy={-40} />} />
+            <VictoryAxis tickValues={bins} tickCount={6} tickFormat={(tick: Date) => `${(new Date(tick)).getFullYear()+1}`} label="Year Tweeted" axisLabelComponent={<VictoryLabel dy={20} />} />
+            <VictoryHistogram data={realData} x={"created_at_date"} bins={bins} />
           </VictoryChart>
         </div>
         <div className={styles.textBlurb}>
@@ -69,9 +70,9 @@ const GraphPage: NextPage = () => {
             <li> The x-axis represents 3-month periods as bins. Years are labeled.</li>
             <li> The y-axis represents the number of tweets @raidsrc liked during a given time period. </li>
           </ul>
-          <p>As you can see, @raidsrc was a Twitter addict during late high school and early college (late 2017 - early 2019), chilled out a bit as college went on (2019 - early 2020), returned to Twitter in full force when lockdown hit because of course he did (mid-2020 - 2021), and is now weaning himself off Twitter (late 2021 - 2022). </p>
+          <p>As you can see, @raidsrc was a Twitter addict during late high school and early college (late 2017 - early 2019), chilled out a bit as college went on (2019 - early 2020), returned to Twitter in full force when lockdown hit because of course he did (mid-2020 - 2021), and is now weaning himself off the constant Twitter usage (late 2021 - 2022). </p>
           <p>OK. Enough talking in the 3rd person. @raidsrc is me. I made this graph because I was curious. Also because I wanted to experiment with swinging around a medium sized dataset. </p>
-          <p>That massive spike that occurred during the last 3 months of 2020 is crazy. It matches up with a sharp decline in my mental health that hit me pretty hard during the pandemic. My mental health throughout the entire pandemic was abysmal, but the end of 2020 was the worst of it. Stuck at home feeling bored. Fed up with Zoom university. Tired of arguing with my parents. It's freezing outside. Haven't seen my friends in a long time. Generally miserable. Worried about the state of the world. And much more. I'm better now, but damn. Looks like I did the worst thing imaginable and hopped on social media. Not a good way to nurture your mental. </p>
+          <p>That massive spike that occurred during the last 3 months of 2020 is crazy. I remember spending straight hours endlessly scrolling on Twitter back then. It matches up with a sharp decline in my mental health that hit me pretty hard during the pandemic. My mental health throughout the entire pandemic was abysmal, but the end of 2020 was the worst of it. Stuck at home feeling bored. Fed up with Zoom university. Tired of arguing with my parents. It's cold outside. Days are short and nights are long. Haven't seen my friends in a long time. Generally miserable. Worried about the state of the world. Worried about my own future after I graduate college. And much more. I'm better now, but damn. Staring at your phone screen day in and day out is one of the worst things you can do when you're depressed, and I went and did just that. Not a good way to nurture your mental. </p>
         </div>
 
         <Link href="/"><a className={styles.link}>&larr; go back</a></Link>
