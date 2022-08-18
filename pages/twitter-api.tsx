@@ -16,9 +16,9 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <div>
+        <div className={styles.mainmain}>
           <Link href="/why" ><a className={styles.link}>&larr; Go back </a></Link> <br />
-          <h1>Fetching data</h1>
+          <h1>Fetching data from Twitter</h1>
           <div className={styles.textBlurb}>
             <div>
               I started sending requests to the Twitter API for my liked tweets. I did some testing in Postman first. &nbsp; <Image src={postman} width={20} height={20}></Image>
@@ -36,10 +36,10 @@ const Home: NextPage = () => {
               Host: api.twitter.com <br />
               Accept-Encoding: gzip, deflate, br <br />
               Connection: keep-alive <br />
-              Cookie: ████████████████████████████████ ████████████████████████████████████████████████ ███████████████████████████████████████████████ ████████████████████████████████████ █████████████████████████████████████ <br />
+              Cookie: ████████████████████████████ ███████████████████████████████ ███████████████████████████████████ █████████████████████████ <br />
             </div>
             <p>I used the bearer token from one of my projects on my free tier Twitter Developer account to authenticate myself. That's the header that says "Authorization: Bearer AAAAAAAAAA███████████████████████████████████████████████████████████████████████████████. Not gonna share it with you, obviously.</p>
-            <p>After fetching all the data, it was time to transform it and get it ready for graphing.</p>
+            <p>After extracting all that data, it was time to transform it.</p>
           </div>
         </div>
 

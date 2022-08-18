@@ -49,32 +49,35 @@ const GraphPage: NextPage<Array<NewNewTwitterLikeObject>> = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1>Tweets Liked by <a className={styles.link} rel="noopener noreferrer" target="_blank" href="https://twitter.com/raidsrc">@raidsrc</a> Across The Years</h1>
-        <div className={styles2.barchart}>
-          <VictoryChart domainPadding={10} theme={VictoryTheme.material}
-            padding={{ left: 70, right: 10, top: 20, bottom: 40 }}
-          >
-            {/* <VictoryLabel x={200} y={290} text="Year Tweeted" /> */}
-            {/* <VictoryLabel x={10} y={180} text="Number of Tweets" angle={270}/> */}
-            {/* <VictoryAxis tickValues={bins} tickFormat={(t: Date) => {String(t)}} /> */}
-            {realData.length === 1 ? <VictoryLabel text="Loading..." x={165} y={150} style={{ fill: "#f4511e", fontSize: "20px" }} /> : <div />}
-            <VictoryAxis dependentAxis tickValues={[500, 1000, 1500, 2000]} tickFormat={(tick: number) => `${tick.toLocaleString()}`} label="Number of Tweets Liked" axisLabelComponent={<VictoryLabel dy={-40} />} />
-            <VictoryAxis tickValues={bins} tickCount={6} tickFormat={(tick: Date) => `${(new Date(tick)).getFullYear() + 1}`} label="Year Original Tweet was Tweeted" axisLabelComponent={<VictoryLabel dy={20} />} />
-            <VictoryHistogram data={realData} x={"created_at_date"} bins={bins} />
-          </VictoryChart>
+        <div>
+          <Link href="/data" ><a className={styles.link}>&larr; Go back </a></Link> <br />
+          <h1>Tweets Liked by <a className={styles.link} rel="noopener noreferrer" target="_blank" href="https://twitter.com/raidsrc">@raidsrc</a> Across The Years</h1>
+          <div className={styles2.barchart}>
+            <VictoryChart domainPadding={10} theme={VictoryTheme.material}
+              padding={{ left: 70, right: 10, top: 20, bottom: 50 }}
+            >
+              {/* <VictoryLabel x={200} y={290} text="Year Tweeted" /> */}
+              {/* <VictoryLabel x={10} y={180} text="Number of Tweets" angle={270}/> */}
+              {/* <VictoryAxis tickValues={bins} tickFormat={(t: Date) => {String(t)}} /> */}
+              {realData.length === 1 ? <VictoryLabel text="Loading..." x={165} y={150} style={{ fill: "#f4511e", fontSize: "20px" }} /> : <div />}
+              <VictoryAxis dependentAxis tickValues={[500, 1000, 1500, 2000]} tickFormat={(tick: number) => `${tick.toLocaleString()}`} label="Number of Tweets Liked" axisLabelComponent={<VictoryLabel dy={-40} />} />
+              <VictoryAxis tickValues={bins} tickCount={6} tickFormat={(tick: Date) => `${(new Date(tick)).getFullYear() + 1}`} label="Year Original Tweet was Tweeted" axisLabelComponent={<VictoryLabel dy={20} />} />
+              <VictoryHistogram data={realData} x={"created_at_date"} bins={bins} />
+            </VictoryChart>
+          </div>
+          <div className={styles.textBlurb}>
+            {/* <ul>
+              <li> The x-axis represents 3-month periods as bins. Years are labeled.</li>
+              <li> The y-axis represents the number of tweets @raidsrc liked during a given time period. </li>
+            </ul> */}
+            <p>Histogram component provided by <a href="https://github.com/FormidableLabs/victory" className={styles.link}>Victory</a>.</p>
+            <p>This histogram uses Twitter likes/favorites as a proxy for Twitter usage. I figure that Twitter feeds you timely and relevant tweets, so the number of tweets you like in a given time period serves as a decent approximation for your amount of Twitter usage during that time. I chose likes/favorites over tweets made or tweets replied to because I made this histogram to inspect my own Twitter usage and I never Tweet.</p>
+            <p>As you can see, (@raidsrc) was a Twitter addict during late high school and early college (late 2017 - early 2019), chilled out a bit as college went on (2019 - early 2020), returned to Twitter in full force when lockdown hit because of course he did (mid-2020 - 2021), and is now weaning himself off the constant Twitter usage (late 2021 - 2022). </p>
+            <p>OK. Enough talking in the 3rd person. @raidsrc is me. I made this graph because I was curious. Also because I wanted to experiment with swinging around a medium sized dataset. Dozens of thousands of tweets liked over the years. That's a lot of data.</p>
+            <p>That massive spike that occurred during the last 3 months of 2020 is crazy. I remember spending straight hours endlessly scrolling on Twitter back then. It matches up with a sharp decline in my mental health that hit me pretty hard during the pandemic. My mental health throughout the entire pandemic was abysmal, but the end of 2020 was the worst of it. Stuck at home feeling bored. Fed up with Zoom university. Tired of arguing with my parents. It's cold outside. Days are short and nights are long. Haven't seen my friends in a long time. Generally miserable. Worried about the state of the world. Worried about my own future after I graduate college. And much more. I'm better now, but damn. Staring at your phone screen day in and day out is one of the worst things you can do when you're depressed, and I went and did just that. Not a good way to nurture your mental. </p>
+          </div>
         </div>
-        <div className={styles.textBlurb}>
-          {/* <ul>
-            <li> The x-axis represents 3-month periods as bins. Years are labeled.</li>
-            <li> The y-axis represents the number of tweets @raidsrc liked during a given time period. </li>
-          </ul> */}
-          <p>This histogram uses Twitter likes/favorites as a proxy for Twitter usage. I figure that Twitter feeds you timely and relevant tweets, so the number of tweets you like in a given time period serves as a decent approximation for your amount of Twitter usage during that time. I chose likes/favorites over tweets made or tweets replied to because I made this histogram to inspect my own Twitter usage and I never Tweet.</p>
-          <p>As you can see, (@raidsrc) was a Twitter addict during late high school and early college (late 2017 - early 2019), chilled out a bit as college went on (2019 - early 2020), returned to Twitter in full force when lockdown hit because of course he did (mid-2020 - 2021), and is now weaning himself off the constant Twitter usage (late 2021 - 2022). </p>
-          <p>OK. Enough talking in the 3rd person. @raidsrc is me. I made this graph because I was curious. Also because I wanted to experiment with swinging around a medium sized dataset. Dozens of thousands of tweets liked over the years. That's a lot of data.</p>
-          <p>That massive spike that occurred during the last 3 months of 2020 is crazy. I remember spending straight hours endlessly scrolling on Twitter back then. It matches up with a sharp decline in my mental health that hit me pretty hard during the pandemic. My mental health throughout the entire pandemic was abysmal, but the end of 2020 was the worst of it. Stuck at home feeling bored. Fed up with Zoom university. Tired of arguing with my parents. It's cold outside. Days are short and nights are long. Haven't seen my friends in a long time. Generally miserable. Worried about the state of the world. Worried about my own future after I graduate college. And much more. I'm better now, but damn. Staring at your phone screen day in and day out is one of the worst things you can do when you're depressed, and I went and did just that. Not a good way to nurture your mental. </p>
-        </div>
-
-        <Link href="/"><a className={styles.link}>&larr; go back</a></Link>
+          <Link href="/wrap"><a className={styles.link}>Aight cool glad we're done &rarr;</a></Link>
       </main>
     </div>
   )

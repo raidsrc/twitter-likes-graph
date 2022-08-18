@@ -1,8 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Dispatch, SetStateAction, useState } from 'react'
 import styles from '../styles/Home.module.css'
+import twitter from "../public/twitter.png"
+import twittersvg from "../public/twitter.svg"
 
 const Home: NextPage = () => {
   return (
@@ -14,8 +17,9 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <div>
-          <h1><a className={styles.link} target="_blank" rel="noopener noreferrer" href="https://twitter.com/raidsrc">@raidsrc</a>{"'s Twitter Likes Graph"}</h1>
+        <div className={styles.mainmain}>
+          
+          <h1><a className={styles.link} target="_blank" rel="noopener noreferrer" href="https://twitter.com/raidsrc">@raidsrc</a>{"'s Twitter Likes Graph"} <Image src={twittersvg} width={30} height={30}></Image> </h1>
           {/* <button className={styles.card} onClick={() => {fetchLikes(setStatus); setStatus("Loading...")}}>Click me to fetch @raidsrc's Twitter likes.</button> */}
           {/* <h2>This web application produces data visualizations based on my Twitter likes. </h2> */}
           {/* <h3>It's a decent amount of data. 17.2k likes. This'll be fun.</h3> */}
@@ -30,10 +34,8 @@ const Home: NextPage = () => {
               <li>set up an etl pipeline to snag data from twitter at the click of a button that the viewer of the page runs whenever they want and checks for new likes and verifies them against old likes and loads everything into a database (mongodb? redis upstash?)</li>
               <li> pretty page transitions and animations for the graph </li>
               <li>make everything SUPER pretty</li>
-              <li>write up a couple blurbs on how i did it and put them all over the pages </li>
             </ol>
           </div>
-
         </div>
 
         <div>

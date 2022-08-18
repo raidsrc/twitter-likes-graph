@@ -14,16 +14,18 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <div className={styles.mainmain}>
-          <Link href="/" ><a className={styles.link}>&larr; Go back </a></Link> <br />
-          <h1>Why</h1>
+        <div>
+          <Link href="/graph" ><a className={styles.link}>&larr; Go back </a></Link> <br />
+          <h1>Wrap-up</h1>
           <div className={styles.textBlurb}>
-            <p>I've had COVID-19 this past week. It's really sucked. I don't get sick too often, but when I do get sick, I get really sick, and getting hit by COVID-19 has been no different. One day, in a drowsy, painful haze, I woke up and wondered what a histogram of my liked Tweets would look like. I went upstairs and drank a mug of Theraflu, then shuffled down to my laptop and started to code. </p>
+            <p>Well that was a fun exercise in web programming, using the Twitter API, ETL, and data visualization. I've never wielded data on this scale before. Almost 20k tweets. Wow.</p>
+            <p>I still have COVID-19. Tested positive earlier today. It's been more than a week since I first started showing symptoms and I'm still suffering. My throat's doing better but I'm still feeling drowsy and not all there in the head. So I'm gonna go back to sleep. Hope you enjoyed taking a tour through this web app. Peace.</p>
           </div>
+
         </div>
 
         <div>
-          <Link href="/twitter-api" ><a className={styles.link}>The Twitter API &rarr;</a></Link> <br />
+          <Link href="/" ><a className={styles.link}>Back to the start &rarr;</a></Link> <br />
           {/* <Link href="/bar-chart" ><a className={styles.link}>i am absolutely infuriated. simply incensed. in a fit of rage. how could this be</a></Link> */}
         </div>
 
