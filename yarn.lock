@@ -106,7 +106,7 @@
   dependencies:
     "isoformat" "^0.2.0"
 
-"@observablehq/runtime@^4.23.0", "@observablehq/runtime@4":
+"@observablehq/runtime@4":
   "integrity" "sha512-/hDQafQWizSnEWMNSO1NosbEsRCauR9UM77VXm4RdodccE+WFTp9RNOFG/nIbMilZhTnZddY05dsNUvzuVNymQ=="
   "resolved" "https://registry.npmjs.org/@observablehq/runtime/-/runtime-4.23.0.tgz"
   "version" "4.23.0"
@@ -958,11 +958,6 @@
   "version" "3.0.0"
   dependencies:
     "esutils" "^2.0.2"
-
-"eee867f901895c46@https://api.observablehq.com/d/eee867f901895c46.tgz?v=3":
-  "integrity" "sha512-5BwReVnGdMJlJb1FWt64oVqT7bVqop38V4Ww+t7wOYneI+d4HHprY1GFRZw1VLt3S5DsKfYYBN7zuHn9zFoHqQ=="
-  "resolved" "https://api.observablehq.com/d/eee867f901895c46.tgz?v=3"
-  "version" "478.0.0"
 
 "emoji-regex@^9.2.2":
   "integrity" "sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg=="
