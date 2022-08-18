@@ -35,7 +35,7 @@ const Home: NextPage = () => {
               <li> pretty page transitions and animations for the graph </li>
               <li>make everything SUPER pretty</li>
             </ol> */}
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis fugit quisquam assumenda facilis ipsam deserunt sunt doloremque architecto itaque quidem ipsa debitis, sint velit beatae nihil ipsum vel ut dignissimos quis eaque accusamus! Inventore distinctio animi in assumenda quae possimus illo laborum porro laudantium. Non minus rerum nulla quas. Maxime!</p>
+            <p>Behold! A web app I made/am making in mid-August 2022 when I had/have COVID-19 and lacked/lack the energy, brainpower, willpower, and lung function to do anything productive. In this web application, I walk you through this crazy idea I had to plot out my Twitter usage throughout the years. I made this app using NextJS, Victory, and d3. Postman was a big help too. Data fetched from the Twitter API. </p>
           </div>
         </div>
 
