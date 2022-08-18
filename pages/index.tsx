@@ -19,7 +19,7 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <div className={styles.mainmain}>
           
-          <h1><a className={styles.link} target="_blank" rel="noopener noreferrer" href="https://twitter.com/raidsrc">@raidsrc</a>{"'s Twitter Likes Graph"} <Image src={twittersvg} width={30} height={30}></Image> </h1>
+          <h1><a className={styles.link} target="_blank" rel="noopener noreferrer" href="https://twitter.com/raidsrc">@raidsrc</a>{"'s Twitter Likes Graph"} <Image alt='Twitter icon' src={twittersvg} width={30} height={30}></Image> </h1>
           {/* <button className={styles.card} onClick={() => {fetchLikes(setStatus); setStatus("Loading...")}}>Click me to fetch @raidsrc's Twitter likes.</button> */}
           {/* <h2>This web application produces data visualizations based on my Twitter likes. </h2> */}
           {/* <h3>It's a decent amount of data. 17.2k likes. This'll be fun.</h3> */}

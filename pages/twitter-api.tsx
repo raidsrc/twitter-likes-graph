@@ -21,11 +21,11 @@ const Home: NextPage = () => {
           <h1>Fetching data from Twitter</h1>
           <div className={styles.textBlurb}>
             <div>
-              I started sending requests to the Twitter API for my liked tweets. I did some testing in Postman first. &nbsp; <Image src={postman} width={20} height={20}></Image>
+              I started sending requests to the Twitter API for my liked tweets. I did some testing in Postman first. &nbsp; <Image alt='Postman icon' src={postman} width={20} height={20}></Image>
               <p></p>
             </div>
             <div className={styles.code}>https://api.twitter.com/2/users/████████████████████/liked_tweets?pagination_token=█████████████████████████████████████&tweet.fields=created_at</div>
-            <p>The Twitter API's liked tweets endpoint returns one page at a time. One page has around 100 liked tweets on it. Pages are connected by pagination tokens. Each page of tweets returned from the endpoint has two pagination tokens on it. One that points to the previous page and one that points to the next page. To get from one page to another, you must use the pagination token you get from one page and make a new request with a query parameter containing that token. Your new request will return the next page.</p>
+            <p>{"The Twitter API's liked tweets endpoint returns one page at a time. One page has around 100 liked tweets on it. Pages are connected by pagination tokens. Each page of tweets returned from the endpoint has two pagination tokens on it. One that points to the previous page and one that points to the next page. To get from one page to another, you must use the pagination token you get from one page and make a new request with a query parameter containing that token. Your new request will return the next page."}</p>
             <p>To fetch as many tweets as I could at a time, I wrote a loop that fetched a page, then used the pagination token from that page to fetch the next page ad infinitum. Unfortunately, Twitter rate-limits you to 75 requests per 15-minute period, so I had to make my requests, wait, and then go for it again after the cooldown. I have almost 20k liked tweets. This took a while.</p>
             <div className={styles.code}>
               GET /2/users/████████████████████/liked_tweets?pagination_token=█████████████████████████████████████&tweet.fields=created_at HTTP/1.1 <br />
@@ -38,7 +38,7 @@ const Home: NextPage = () => {
               Connection: keep-alive <br />
               Cookie: ████████████████████████████ ███████████████████████████████ ███████████████████████████████████ █████████████████████████ <br />
             </div>
-            <p>I used the bearer token from one of my projects on my free tier Twitter Developer account to authenticate myself. That's the header that says "Authorization: Bearer AAAAAAAAAA███████████████████████████████████████████████████████████████████████████████.</p>
+            <p>{`I used the bearer token from one of my projects on my free tier Twitter Developer account to authenticate myself. That's the header that says "Authorization: Bearer AAAAAAAAAA███████████████████████████████████████████████████████████████████████████████.`}</p>
             <p>Not gonna share the actual bearer token with you, obviously.</p>
             <p>After extracting all that data, it was time to transform it.</p>
           </div>
