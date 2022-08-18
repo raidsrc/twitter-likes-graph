@@ -25,7 +25,7 @@ const Home: NextPage = () => {
           {/* <h3>It's a decent amount of data. 17.2k likes. This'll be fun.</h3> */}
 
           <div className={styles.textBlurb}>
-            <p>{"Ok, since this web app is still under construction, I'll use this page as a notepad to draft up notes on what this app should do."}
+            {/* <p>{"Ok, since this web app is still under construction, I'll use this page as a notepad to draft up notes on what this app should do."}
             </p>
             <p>
               todo:
@@ -34,7 +34,8 @@ const Home: NextPage = () => {
               <li>set up an etl pipeline to snag data from twitter at the click of a button that the viewer of the page runs whenever they want and checks for new likes and verifies them against old likes and loads everything into a database (mongodb? redis upstash?)</li>
               <li> pretty page transitions and animations for the graph </li>
               <li>make everything SUPER pretty</li>
-            </ol>
+            </ol> */}
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis fugit quisquam assumenda facilis ipsam deserunt sunt doloremque architecto itaque quidem ipsa debitis, sint velit beatae nihil ipsum vel ut dignissimos quis eaque accusamus! Inventore distinctio animi in assumenda quae possimus illo laborum porro laudantium. Non minus rerum nulla quas. Maxime!</p>
           </div>
         </div>
 

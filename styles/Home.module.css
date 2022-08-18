@@ -18,13 +18,11 @@
 }
 
 .mainmain {
-  width: 100%;
+  width: auto;
 }
 
 .textBlurb {
   max-width: 60rem;
-  min-width: 10rem;
-  width: 90%;
 }
 
 .footer {
@@ -139,6 +137,12 @@
   margin: 4rem;
 }
 
+@media (max-width: 1200px) {
+  .mainmain {
+    width: 100%;
+  }
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
@@ -146,6 +150,9 @@
   }
   .code {
     font-size: small;
+  }
+  .main {
+    padding: 4rem 2rem;
   }
 }
 

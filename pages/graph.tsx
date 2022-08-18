@@ -49,7 +49,7 @@ const GraphPage: NextPage<Array<NewNewTwitterLikeObject>> = () => {
       </Head>
 
       <main className={styles.main}>
-        <div>
+        <div className={styles.mainmain}>
           <Link href="/data" ><a className={styles.link}>&larr; Go back </a></Link> <br />
           <h1>Tweets Liked by <a className={styles.link} rel="noopener noreferrer" target="_blank" href="https://twitter.com/raidsrc">@raidsrc</a> Across The Years</h1>
           <div className={styles2.barchart}>

@@ -18,7 +18,7 @@ const Home: NextPage = () => {
           <Link href="/" ><a className={styles.link}>&larr; Go back </a></Link> <br />
           <h1>Why</h1>
           <div className={styles.textBlurb}>
-            <p>I've had COVID-19 this past week. It's really sucked. I don't get sick too often, but when I do get sick, I get really sick, and getting hit by COVID-19 has been no different. One day, in a drowsy, painful haze, I woke up and wondered what a histogram of my liked Tweets would look like. I went upstairs and drank a mug of Theraflu, then shuffled down to my laptop and started to code. </p>
+            <p>I've had COVID-19 this past week. It's really sucked. I don't get sick too often, but when I do get sick, I get really sick, and getting hit by COVID-19 has been no different. One day, in a drowsy, painful haze, I woke up and wondered what a histogram of my liked Tweets would look like. I went upstairs and drank a mug of Theraflu, then shuffled down to my laptop and started coding. </p>
           </div>
         </div>
 
