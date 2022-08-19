@@ -57,7 +57,7 @@ export default async function handler(
     })
   }
   //const graphThis = prepareForGraphing(newShit)
-
+  res.setHeader("Access-Control-Allow-Origin", "*")
   res.status(200).json(newShit)
 
 }
