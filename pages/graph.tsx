@@ -84,7 +84,14 @@ const GraphPage: NextPage<Array<NewNewTwitterLikeObject>> = () => {
 }
 
 async function getRealData() {
-  let response: Array<NewTwitterLikeObject> = await (await fetch("http://localhost:3000/api/fetch-local-twitter-likes")).json()
+  let domain = ""
+  if (process.env.NODE_ENV === "development") {
+    domain = "http://localhost:3000"
+  } else {
+    domain = "https://twitter-likes-graph-raidsrc.vercel.app"
+  }
+  
+  let response: Array<NewTwitterLikeObject> = await (await fetch(`${domain}/api/fetch-local-twitter-likes`)).json()
   return response
 }
 
