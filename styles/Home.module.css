@@ -76,9 +76,11 @@
   font-size: 1.1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
-
 }
 
+.preWrap {
+  white-space: pre-wrap;
+}
 
 .grid {
   display: flex;
@@ -86,6 +88,24 @@
   justify-content: center;
   flex-wrap: wrap;
   max-width: 800px;
+}
+
+.postman-image-text-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text-next-to-postman-image {
+  width: 80%;
+}
+
+.postman-image-div {
+  width: 20%;
+  padding: 1em;
+  max-width: 80px;
+  min-width: 64px;
+  margin-right: 10%;
 }
 
 .card {
@@ -144,30 +164,22 @@
   }
 }
 
-@media (max-width: 900px) {
-  .code {
-    font-size: small;
-  }
-}
-
-@media (max-width: 700px) {
+@media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
   }
 
-  .codeDataFromTwitterDesktop {
-    display: none;
+  .code {
+    font-size: small;
   }
 
   .main {
     padding: 4rem 2rem;
   }
-}
 
-@media (max-width: 500px) {
-  .main {
-    padding: 3rem 1rem;
+  .postman-image-div {
+    margin-right: 0%;
   }
 }
 
