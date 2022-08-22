@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useRouter } from "next/router"
-import { ReactElement } from "react"
+import { useEffect } from "react"
 
 type props = {
   children: JSX.Element
@@ -11,21 +11,21 @@ const Transition: React.FC<props> = ({ children }) => {
     out: {
       opacity: 0,
       transition: {
-        duration: 0.3
+        duration: 0.2
       }
     },
     in: {
       opacity: 1,
       transition: {
-        duration: 0.3,
-        delay: 0.1,
+        duration: 0.2,
+        delay: 0.05,
       }
     }
   }
   const router = useRouter()
   return (
     <div className="effect-1">
-      <AnimatePresence initial={false} mode="wait">
+      <AnimatePresence initial={false} mode="wait" onExitComplete={() => scroll(0,0)}>
         <motion.div key={router.asPath} variants={variants} animate="in" initial="out" exit="out">
           {children}
         </motion.div>

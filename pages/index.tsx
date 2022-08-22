@@ -42,7 +42,7 @@ const Index: NextPage = () => {
           </div>
 
           <div>
-            <Link href="/why" ><a className={styles.link}>Check it out &rarr;</a></Link> <br />
+            <Link href="/why" scroll={false} ><a className={styles.link}>Check it out &rarr;</a></Link> <br />
             {/* <Link href="/bar-chart" ><a className={styles.link}>i am absolutely infuriated. simply incensed. in a fit of rage. how could this be</a></Link> */}
           </div>
           {/* <div>{status}</div> */}

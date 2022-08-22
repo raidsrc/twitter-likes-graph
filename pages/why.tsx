@@ -26,7 +26,7 @@ const Why: NextPage = () => {
           </div>
 
           <div>
-            <Link href="/twitter-api" ><a className={styles.link}>The Twitter API &rarr;</a></Link> <br />
+            <Link href="/twitter-api" scroll={false} ><a className={styles.link}>The Twitter API &rarr;</a></Link> <br />
             {/* <Link href="/bar-chart" ><a className={styles.link}>i am absolutely infuriated. simply incensed. in a fit of rage. how could this be</a></Link> */}
           </div>
 

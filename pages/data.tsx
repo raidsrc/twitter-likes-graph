@@ -59,7 +59,7 @@ const Data: NextPage = () => {
         </div>
 
         <div>
-          <Link href="/graph" ><a className={styles.link}>Time to visualize &rarr;</a></Link> <br />
+          <Link href="/graph" scroll={false} ><a className={styles.link}>Time to visualize &rarr;</a></Link> <br />
           {/* <Link href="/bar-chart" ><a className={styles.link}>i am absolutely infuriated. simply incensed. in a fit of rage. how could this be</a></Link> */}
         </div>
 

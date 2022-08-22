@@ -74,7 +74,7 @@ const Graph: NextPage<Array<NewNewTwitterLikeObject>> = () => {
             <p>{`I have been actively trying to limit screentime starting from 2021 onward. I've adopted the view that social media is just pointless. Completely pointless. And that life is better lived offscreen. Unfortunately, this view of mine is nothing but a faraway dream now, since it's impossible to do just about anything in today's society without interfacing with a screen at some point. But I try to go screenless whenever possible, if only for a short time. I like saving my eyes and my sanity. `}</p>
           </div>
         </div>
-          <Link href="/wrap"><a className={styles.link}>{"Aight cool glad we're done "}&rarr;</a></Link>
+          <Link href="/wrap" scroll={false}><a className={styles.link}>{"Aight cool glad we're done "}&rarr;</a></Link>
       </main>
     </div>
   )

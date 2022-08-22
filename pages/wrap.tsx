@@ -21,7 +21,7 @@ const Wrap: NextPage = () => {
         </div>
 
         <div>
-          <Link href="/" ><a className={styles.link}>Back to the start &rarr;</a></Link> <br />
+          <Link href="/" scroll={false} ><a className={styles.link}>Back to the start &rarr;</a></Link> <br />
           {/* <Link href="/bar-chart" ><a className={styles.link}>i am absolutely infuriated. simply incensed. in a fit of rage. how could this be</a></Link> */}
         </div>
 
