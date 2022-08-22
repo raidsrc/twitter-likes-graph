@@ -1,17 +1,24 @@
 import type { NextPage } from 'next'
 import Link from 'next/link'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import HeadComponent from '../components/HeadComponent'
 import styles from '../styles/Home.module.css'
 
-const Home: NextPage = () => {
+type props = {
+  setFinished: Dispatch<SetStateAction<boolean>>
+}
+
+const Wrap: NextPage<props> = (props) => {
+  useEffect(()=> {
+    props.setFinished(true)
+  }, [])
   return (
     <div className={styles.container}>
       <HeadComponent />
 
       <main className={styles.main}>
         <div>
-          <Link href="/graph" ><a className={styles.link}>&larr; Go back </a></Link> <br />
+          <Link href="/graph" scroll={false}><a className={styles.link}>&larr; Go back </a></Link> <br />
           <h1>Wrap-up</h1>
           <div className={styles.textBlurb}>
             <p>{`Well that was a fun exercise in web programming, using the Twitter API, ETL, and data visualization. I've never wielded data on this scale before. Almost 20k tweets. Wow. That's a lot more data than I'm used to handling.`}</p>
@@ -21,28 +28,11 @@ const Home: NextPage = () => {
         </div>
 
         <div>
-          <Link href="/" ><a className={styles.link}>Back to the start &rarr;</a></Link> <br />
-          {/* <Link href="/bar-chart" ><a className={styles.link}>i am absolutely infuriated. simply incensed. in a fit of rage. how could this be</a></Link> */}
+          <Link href="/" scroll={false} ><a className={styles.link}>Back to the start &rarr;</a></Link> <br />
         </div>
-
-
-        {/* <div>{status}</div> */}
       </main>
-
-
     </div>
   )
 }
 
-async function fetchLikes(setStatus: Dispatch<SetStateAction<string>>) {
-  const queryString = "?pages_to_fetch=200"
-  try {
-    let response = await fetch(`/api/fetch-twitter-likes${queryString}`)
-    let responseJson = await response.json()
-    setStatus("Fetched.")
-  } catch (error) {
-    console.error(error)
-  }
-}
-
-export default Home
+export default Wrap
