@@ -12,7 +12,7 @@ import { useRouter } from 'next/router'
 const Index: NextPage = () => {
   const router = useRouter()
   return (
-    <CSSTransition in={router.asPath === "/"} classNames={{ ...animationStyles }} timeout={3000}>
+    <CSSTransition in={router.asPath === "/"} classNames="index" timeout={3000}>
       <div className={styles.container}>
         <HeadComponent />
 

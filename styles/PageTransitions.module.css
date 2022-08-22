@@ -1,14 +1,14 @@
-.index-enter {
+.page-enter {
   opacity: 0;
 }
-.index-enter-active {
+.page-enter-active {
   opacity: 1;
   transition: opacity 3000ms;
 }
-.index-exit {
+.page-exit {
   opacity: 1;
 }
-.index-exit-active {
+.page-exit-active {
   opacity: 0;
   transition: opacity 1000ms;
 }
