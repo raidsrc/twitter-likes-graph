@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction, useState } from 'react'
 import HeadComponent from '../components/HeadComponent'
 import styles from '../styles/Home.module.css'
 
-const Home: NextPage = () => {
+const Wrap: NextPage = () => {
   return (
     <div className={styles.container}>
       <HeadComponent />
@@ -45,4 +45,4 @@ async function fetchLikes(setStatus: Dispatch<SetStateAction<string>>) {
   }
 }
 
-export default Home
+export default Wrap

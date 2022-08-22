@@ -6,7 +6,7 @@ import styles from '../styles/Home.module.css'
 import postman from "../public/postman.png"
 import HeadComponent from '../components/HeadComponent'
 
-const Home: NextPage = () => {
+const TwitterApi: NextPage = () => {
   return (
     <div className={styles.container}>
       <HeadComponent />
@@ -71,4 +71,4 @@ async function fetchLikes(setStatus: Dispatch<SetStateAction<string>>) {
   }
 }
 
-export default Home
+export default TwitterApi
