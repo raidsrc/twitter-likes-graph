@@ -60,27 +60,10 @@ const Data: NextPage = () => {
 
         <div>
           <Link href="/graph" scroll={false} ><a className={styles.link}>Time to visualize &rarr;</a></Link> <br />
-          {/* <Link href="/bar-chart" ><a className={styles.link}>i am absolutely infuriated. simply incensed. in a fit of rage. how could this be</a></Link> */}
         </div>
-
-
-        {/* <div>{status}</div> */}
       </main>
-
-
     </div>
   )
-}
-
-async function fetchLikes(setStatus: Dispatch<SetStateAction<string>>) {
-  const queryString = "?pages_to_fetch=200"
-  try {
-    let response = await fetch(`/api/fetch-twitter-likes${queryString}`)
-    let responseJson = await response.json()
-    setStatus("Fetched.")
-  } catch (error) {
-    console.error(error)
-  }
 }
 
 export default Data
