@@ -46,7 +46,7 @@ const Graph: NextPage<Array<NewNewTwitterLikeObject>> = () => {
 
       <main className={styles.main}>
         <div className={styles.mainmain}>
-          <Link href="/data" ><a className={styles.link}>&larr; Go back </a></Link> <br />
+          <Link href="/data" scroll={false}><a className={styles.link}>&larr; Go back </a></Link> <br />
           <h1>Tweets Liked by <a className={styles.link} rel="noopener noreferrer" target="_blank" href="https://twitter.com/raidsrc">@raidsrc</a> Across The Years</h1>
           <div className={styles2.barchart}>
             <VictoryChart domainPadding={10} theme={VictoryTheme.material}

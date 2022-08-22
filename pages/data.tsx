@@ -12,7 +12,7 @@ const Data: NextPage = () => {
 
       <main className={styles.main}>
         <div className={styles.mainmain}>
-          <Link href="/twitter-api" ><a className={styles.link}>&larr; Go back </a></Link> <br />
+          <Link href="/twitter-api" scroll={false}><a className={styles.link}>&larr; Go back </a></Link> <br />
           <h1>The data</h1>
           <div className={styles.textBlurb}>
             <p>{"Here's a small snippet of my liked tweet data straight off Twitter. "}</p>

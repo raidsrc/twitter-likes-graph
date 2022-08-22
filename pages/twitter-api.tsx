@@ -13,7 +13,7 @@ const TwitterApi: NextPage = () => {
 
       <main className={styles.main}>
         <div className={styles.mainmain}>
-          <Link href="/why" ><a className={styles.link}>&larr; Go back </a></Link> <br />
+          <Link href="/why" scroll={false}><a className={styles.link}>&larr; Go back </a></Link> <br />
           <h1>Fetching data from Twitter</h1>
           <div className={styles.textBlurb}>
             <div className={styles["postman-image-text-container"]}>
