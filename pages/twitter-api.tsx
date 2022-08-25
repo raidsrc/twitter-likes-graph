@@ -40,7 +40,7 @@ const TwitterApi: NextPage = () => {
               Connection: keep-alive <br />
               Cookie: ████████████████████████████ ███████████████████████████████ ███████████████████████████████████ █████████████████████████ <br />
             </div>
-            <p>{`I used the bearer token from one of my projects on my free tier Twitter Developer account to authenticate myself. That's the header that says "Authorization: Bearer AAAAAAAAAA███████████████████████████████████████████████████████████████████████████████.`}</p>
+            <p>{`This is what the full HTTP GET request looks like. Straight from the Postman console. I used the bearer token from one of my projects on my free tier Twitter Developer account to authenticate myself. That's the header that says "Authorization: Bearer AAAAAAAAAA███████████████████████████████████████████████████████████████████████████████."`}</p>
             <p>Not gonna share the actual bearer token with you, obviously.</p>
             <p>After extracting all that data, it was time to transform it.</p>
           </div>
