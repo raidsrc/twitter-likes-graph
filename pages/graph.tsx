@@ -57,7 +57,7 @@ const Graph: NextPage<Array<NewNewTwitterLikeObject>> = () => {
               {/* <VictoryAxis tickValues={bins} tickFormat={(t: Date) => {String(t)}} /> */}
               {realData.length === 1 ? <VictoryLabel text="Loading..." x={165} y={150} style={{ fill: "#f4511e", fontSize: "20px" }} /> : <div />}
               <VictoryAxis dependentAxis tickValues={[500, 1000, 1500, 2000]} tickFormat={(tick: number) => `${tick.toLocaleString()}`} label="Number of Tweets Liked" axisLabelComponent={<VictoryLabel dy={-40} />} />
-              <VictoryAxis tickValues={bins} tickCount={6} tickFormat={(tick: Date) => `${(new Date(tick)).getFullYear() + 1}`} label="When the Tweet was Twaught" axisLabelComponent={<VictoryLabel dy={20} />} />
+              <VictoryAxis tickValues={bins} tickCount={6} tickFormat={(tick: Date) => `${(new Date(tick)).getFullYear() + 1}`} label="When the Tweet was Liked, Probably" axisLabelComponent={<VictoryLabel dy={20} />} />
               <VictoryHistogram data={realData} x={"created_at_date"} bins={bins} />
             </VictoryChart>
           </div>
