@@ -20,7 +20,7 @@ const Index: NextPage<props> = ({ finished }) => {
           {finished ? <div>
             <Link href="/wrap" scroll={false}><a className={styles.link}>&larr; Go back </a></Link> <br />
           </div> : ""}
-          <h1><a className={styles.link} target="_blank" rel="noopener noreferrer" href="https://twitter.com/raidsrc">@raidsrc</a>{"'s Twitter Likes Graph"} <Image alt='Twitter icon' src={twittersvg} width={30} height={30}></Image> </h1>
+          <h1><a className={styles.link} target="_blank" rel="noopener noreferrer" href="https://twitter.com/raidsrc">@raidsrc</a>{"'s Twitter Likes Data Analysis Adventure"} <Image alt='Twitter icon' src={twittersvg} width={30} height={30}></Image> </h1>
 
           <div className={styles.textBlurb}>
             {/* <p>{"Ok, since this web app is still under construction, I'll use this page as a notepad to draft up notes on what this app should do."}
@@ -33,8 +33,7 @@ const Index: NextPage<props> = ({ finished }) => {
                 <li>more animations</li>
               </ol>
               <h2>actual blurb to put on page when done coding</h2> */}
-            <p>Behold! A web app I made/am making in mid-August 2022 when I had/have COVID-19 and lacked/lack the energy, brainpower, willpower, and lung function to do anything productive. In this web application, I walk you through this crazy idea I had to plot out my Twitter usage throughout the years. I made this app using NextJS, Victory, Framer Motion, and d3. Postman was a big help too. Data fetched from the Twitter API. </p>
-
+            <p>Behold! A web app I made in mid-August 2022 when I had COVID-19 and lacked the energy, brainpower, willpower, and lung function to do anything productive. In this web application, I walk you through this crazy idea I had to plot out my Twitter usage throughout the years. I made this app using NextJS, Victory, Framer Motion, and d3. Postman was a big help too. Data fetched from the Twitter API. </p>
           </div>
         </div>
 
